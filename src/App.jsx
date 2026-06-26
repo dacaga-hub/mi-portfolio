@@ -10,38 +10,29 @@ import {
   FileText,
 } from "lucide-react";
 
-/* ============================================================
-   1) TUS DATOS  —  EDITA SOLO ESTO
-   ------------------------------------------------------------
-   Esta es la parte importante para empezar. En React es muy
-   habitual separar los "datos" (este objeto) de la "interfaz"
-   (los componentes de abajo). Tú cambias aquí tu información
-   y la página se actualiza sola.
-   ============================================================ */
+//DATOS PERSONALES
 const datos = {
   nombre: "Daniel Caravaca Garcia",
   rol: "Desarrollador de Aplicaciones Web",
-  // Una frase corta que diga quién eres. Concreta, sin relleno.
   pitch:
     "Construyo interfaces web limpias y accesibles. Con experiencia real en Vue.js y buscando mi primera oportunidad como desarrollador.",
   ubicacion: "Barcelona, España",
-  disponible: true, // pon false cuando ya no busques trabajo
+  disponible: true,
   email: "daniel.caravacagarcia@gmail.com",
 
   enlaces: {
     github: "https://github.com/dacaga-hub",
     linkedin: "https://linkedin.com/in/danielcaravaca-dev/",
-    cv: "/cv.pdf", // pega aquí el enlace a tu CV en PDF (p.ej. en Drive o tu web)
+    cv: "https://drive.google.com/file/d/1eEhkxSIAysYJSzEYbg5pTeCepSyPFxMM/view?usp=drive_link",
   },
 
-  // Tus 2 proyectos. Duplica un bloque { ... } para añadir más.
   proyectos: [
     {
       titulo: "CiMS",
       descripcion:
         "Aplicación multiplataforma para la gestión y seguimiento de cumbres de montaña de Cataluña. Trabajo en equipo de final de curso, con el que conseguimos el reconocimiento al mejor proyecto por la excelencia demostrada durante su desarrollo.",
       tecnologias: ["Flutter", "API REST", "Node.js", "Express", "SQL"],
-      demo: "#", // URL pública del proyecto (Vercel / Netlify)
+      demo: "#", //Sin actualizar
       repo: "https://github.com/cims-cat/CiMS",
     },
     {
@@ -53,7 +44,7 @@ const datos = {
     },
   ],
 
-  // Tecnologías con las que trabajas o estás aprendiendo.
+  // TECNOLOGIAS
   stack: [
     "Vue",
     "HTML",
@@ -70,14 +61,11 @@ const datos = {
     "Claude AI"
   ],
 
-  // Un párrafo corto sobre ti. Honesto y directo.
   sobreMi:
     "Soy desarrollador junior de aplicaciones multiplataforma. Disfruto convirtiendo diseños en interfaces que funcionan bien en cualquier dispositivo. Me formo de manera autónoma y busco un equipo donde seguir creciendo, integrando herramientas de IA para desarrollar de forma más eficiente.",
 };
 
-/* ============================================================
-   2) PALETA  —  los colores en un solo lugar (otro patrón útil)
-   ============================================================ */
+//PALETA
 const c = {
   fondo: "#FBFAF8",
   tinta: "#1A1A1E",
@@ -92,14 +80,8 @@ const c = {
 const fuente =
   "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
-/* ============================================================
-   3) COMPONENTES PEQUEÑOS
-   ------------------------------------------------------------
-   Fíjate cómo dividimos la página en piezas reutilizables.
-   Eso es la base de React: componer la UI con componentes.
-   ============================================================ */
+//COMPONENTES
 
-// Un "chip" para mostrar una tecnología
 function Tag({ texto }) {
   return (
     <span
@@ -111,7 +93,6 @@ function Tag({ texto }) {
   );
 }
 
-// Tarjeta de un proyecto. Recibe los datos por "props".
 function ProyectoCard({ proyecto }) {
   return (
     <article
@@ -136,8 +117,6 @@ function ProyectoCard({ proyecto }) {
         {proyecto.descripcion}
       </p>
 
-      {/* Recorremos el array de tecnologías con .map() —
-          un patrón que usarás muchísimo en React */}
       <div className="mt-4 flex flex-wrap gap-2">
         {proyecto.tecnologias.map((tec) => (
           <Tag key={tec} texto={tec} />
@@ -171,19 +150,17 @@ function ProyectoCard({ proyecto }) {
   );
 }
 
-/* ============================================================
-   4) COMPONENTE PRINCIPAL
-   ============================================================ */
+//PRINCIPAL
+
 export default function Portfolio() {
-  // useState es el "estado" de React: datos que cambian con la
-  // interacción. Aquí lo usamos para el botón de copiar el email.
+
   const [copiado, setCopiado] = useState(false);
 
   async function copiarEmail() {
     try {
       await navigator.clipboard.writeText(datos.email);
       setCopiado(true);
-      setTimeout(() => setCopiado(false), 1800); // vuelve al estado normal
+      setTimeout(() => setCopiado(false), 1800);
     } catch {
       // si el navegador bloquea el portapapeles, no pasa nada
     }
