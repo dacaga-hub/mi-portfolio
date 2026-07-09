@@ -13,7 +13,7 @@ import {
 //DATOS PERSONALES
 const datos = {
   nombre: "Daniel Caravaca Garcia",
-  rol: "Desarrollador de Aplicaciones Web",
+  rol: "Desarrollador de Aplicaciones Multiplataforma",
   pitch:
     "Construyo interfaces web limpias y accesibles. Con experiencia real en Vue.js y buscando mi primera oportunidad como desarrollador.",
   ubicacion: "Barcelona, España",
