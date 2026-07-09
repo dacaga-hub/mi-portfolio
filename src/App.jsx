@@ -42,6 +42,13 @@ const datos = {
       tecnologias: ["Tauri", "Vue 3", "TypeScript", "SQLite"],
       repo: "https://github.com/dacaga-hub/MyMnga",
     },
+    {
+      titulo: "LRU Cache en Java",
+      descripcion:
+        "Implementación de una caché LRU desde cero, optimizada de O(n) a O(1) con una lista doblemente enlazada (escrita a mano) y un HashMap. Thread-safe mediante synchronized, con suite de tests JUnit que incluye pruebas de concurrencia. Desarrollada con TDD.",
+      tecnologias: ["Java", "Maven", "JUnit"],
+      repo: "https://github.com/dacaga-hub/LRU-Cache-Java",
+    },
   ],
 
   // TECNOLOGIAS
