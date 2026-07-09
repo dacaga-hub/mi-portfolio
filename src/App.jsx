@@ -51,6 +51,31 @@ const datos = {
     },
   ],
 
+  // CERTIFICACIONES
+  certificaciones: [
+    {
+      titulo: "Claude Code in Action",
+      emisor: "Anthropic",
+      fecha: "2026",
+      tecnologias: ["Claude Code", "AI Workflows"],
+      credencial: "https://verify.skilljar.com/c/284kb6fisq5n",
+    },
+    {
+      titulo: "Introduction to Agent Skills",
+      emisor: "Anthropic",
+      fecha: "2026",
+      tecnologias: ["Agent Skills", "Claude Code"],
+      credencial: "https://verify.skilljar.com/c/cnc7p94cj9n3",
+    },
+    {
+      titulo: "Introduction to Subagents",
+      emisor: "Anthropic",
+      fecha: "2026",
+      tecnologias: ["Subagents", "Claude Code"],
+      credencial: "https://verify.skilljar.com/c/8w5n5fzs8ysm",
+    },
+  ],
+
   // TECNOLOGIAS
   stack: [
     "Vue",
@@ -151,6 +176,54 @@ function ProyectoCard({ proyecto }) {
           style={{ color: c.suave }}
         >
           <Code size={15} /> Código
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function CertificacionCard({ certificacion }) {
+  return (
+    <article
+      className="group rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1"
+      style={{ backgroundColor: c.blanco, border: `1px solid ${c.borde}` }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <h3
+          className="text-lg font-semibold leading-snug"
+          style={{ color: c.tinta }}
+        >
+          {certificacion.titulo}
+        </h3>
+        <ArrowUpRight
+          size={20}
+          className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
+          style={{ color: c.acento }}
+        />
+      </div>
+
+      <p className="mt-2 text-sm leading-relaxed" style={{ color: c.suave }}>
+        {certificacion.emisor} · {certificacion.fecha}
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {certificacion.tecnologias.map((tec) => (
+          <Tag key={tec} texto={tec} />
+        ))}
+      </div>
+
+      <div
+        className="mt-5 pt-4 flex items-center gap-4 text-sm font-medium"
+        style={{ borderTop: `1px solid ${c.borde}` }}
+      >
+        <a
+          href={certificacion.credencial}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 hover:underline"
+          style={{ color: c.acento }}
+        >
+          Ver credencial <ArrowUpRight size={15} />
         </a>
       </div>
     </article>
@@ -285,6 +358,18 @@ export default function Portfolio() {
               >
                 {t}
               </span>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------- CERTIFICACIONES ---------- */}
+        <section className="mt-20">
+          <h2 className="text-sm font-semibold uppercase tracking-wider" style={{ color: c.suave }}>
+            Certificaciones
+          </h2>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {datos.certificaciones.map((cert, i) => (
+              <CertificacionCard key={i} certificacion={cert} />
             ))}
           </div>
         </section>
