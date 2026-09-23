@@ -15,7 +15,7 @@ const datos = {
   nombre: "Daniel Caravaca Garcia",
   rol: "Desarrollador de Aplicaciones Multiplataforma",
   pitch:
-    "Construyo interfaces web limpias y accesibles. Con experiencia real en Vue.js y buscando mi primera oportunidad como desarrollador.",
+    "Desarrollador junior con experiencia profesional en frontend (Vue.js, Cypress) y proyectos propios en Java/Spring Boot y Python. Busco un equipo donde seguir creciendo hacia full-stack.",
   ubicacion: "Barcelona, España",
   disponible: true,
   email: "daniel.caravacagarcia@gmail.com",
@@ -68,22 +68,22 @@ const datos = {
   certificaciones: [
     {
       titulo: "Claude Code in Action",
-      emisor: "Anthropic",
-      fecha: "2026",
+      emisor: "Claude Academy (Anthropic)",
+      fecha: "June 2026",
       tecnologias: ["Claude Code", "AI Workflows"],
       credencial: "https://academy.claude.com/verify/8e21504bb6e6f6991a10e012716cbd40",
     },
     {
       titulo: "Introduction to Agent Skills",
-      emisor: "Anthropic",
-      fecha: "2026",
+      emisor: "Claude Academy (Anthropic)",
+      fecha: "June 2026",
       tecnologias: ["Agent Skills", "Claude Code"],
       credencial: "https://academy.claude.com/verify/dfffcd06281eb741db91da9df6eed8a0",
     },
     {
       titulo: "Introduction to Subagents",
-      emisor: "Anthropic",
-      fecha: "2026",
+      emisor: "Claude Academy (Anthropic)",
+      fecha: "June 2026",
       tecnologias: ["Subagents", "Claude Code"],
       credencial: "https://academy.claude.com/verify/2f408bd1bb890f89a3c2dbfadbf4418f",
     },
@@ -103,14 +103,16 @@ const datos = {
     "CSS",
     "JavaScript",
     "TypeScript",
+    "Cypress",
+    "Java",
+    "Spring Boot",
     "Python",
     "Flutter",
     "React",
     "SQL",
     "API REST",
     "Git & GitHub",
-    "Responsive design",
-    "Claude AI"
+    "Claude AI",
   ],
 
   sobreMi:
@@ -148,22 +150,15 @@ function Tag({ texto }) {
 function ProyectoCard({ proyecto }) {
   return (
     <article
-      className="group rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1"
+      className="rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1"
       style={{ backgroundColor: c.blanco, border: `1px solid ${c.borde}` }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <h3
-          className="text-lg font-semibold leading-snug"
-          style={{ color: c.tinta }}
-        >
-          {proyecto.titulo}
-        </h3>
-        <ArrowUpRight
-          size={20}
-          className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-          style={{ color: c.acento }}
-        />
-      </div>
+      <h3
+        className="text-lg font-semibold leading-snug"
+        style={{ color: c.tinta }}
+      >
+        {proyecto.titulo}
+      </h3>
 
       <p className="mt-2 text-sm leading-relaxed" style={{ color: c.suave }}>
         {proyecto.descripcion}
@@ -179,21 +174,23 @@ function ProyectoCard({ proyecto }) {
         className="mt-5 pt-4 flex items-center gap-4 text-sm font-medium"
         style={{ borderTop: `1px solid ${c.borde}` }}
       >
-        <a
-          href={proyecto.demo}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1.5 hover:underline"
-          style={{ color: c.acento }}
-        >
-          Ver demo <ArrowUpRight size={15} />
-        </a>
+        {proyecto.demo && (
+          <a
+            href={proyecto.demo}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 hover:underline"
+            style={{ color: c.acento }}
+          >
+            Ver demo <ArrowUpRight size={15} />
+          </a>
+        )}
         <a
           href={proyecto.repo}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1.5 hover:underline"
-          style={{ color: c.suave }}
+          style={{ color: proyecto.demo ? c.suave : c.acento }}
         >
           <Code size={15} /> Código
         </a>
@@ -205,22 +202,15 @@ function ProyectoCard({ proyecto }) {
 function CertificacionCard({ certificacion }) {
   return (
     <article
-      className="group rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1"
+      className="rounded-2xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1"
       style={{ backgroundColor: c.blanco, border: `1px solid ${c.borde}` }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <h3
-          className="text-lg font-semibold leading-snug"
-          style={{ color: c.tinta }}
-        >
-          {certificacion.titulo}
-        </h3>
-        <ArrowUpRight
-          size={20}
-          className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-          style={{ color: c.acento }}
-        />
-      </div>
+      <h3
+        className="text-lg font-semibold leading-snug"
+        style={{ color: c.tinta }}
+      >
+        {certificacion.titulo}
+      </h3>
 
       <p className="mt-2 text-sm leading-relaxed" style={{ color: c.suave }}>
         {certificacion.emisor} · {certificacion.fecha}
@@ -253,7 +243,6 @@ function CertificacionCard({ certificacion }) {
 //PRINCIPAL
 
 export default function Portfolio() {
-
   const [copiado, setCopiado] = useState(false);
 
   async function copiarEmail() {
@@ -388,8 +377,8 @@ export default function Portfolio() {
             Certificaciones
           </h2>
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {datos.certificaciones.map((cert, i) => (
-              <CertificacionCard key={i} certificacion={cert} />
+            {datos.certificaciones.map((cert) => (
+              <CertificacionCard key={cert.credencial} certificacion={cert} />
             ))}
           </div>
         </section>
@@ -447,10 +436,22 @@ export default function Portfolio() {
             © {new Date().getFullYear()} {datos.nombre}
           </span>
           <div className="flex items-center gap-4">
-            <a href={datos.enlaces.github} target="_blank" rel="noreferrer" className="hover:opacity-60">
+            <a
+              href={datos.enlaces.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="hover:opacity-60"
+            >
               <Code size={18} />
             </a>
-            <a href={datos.enlaces.linkedin} target="_blank" rel="noreferrer" className="hover:opacity-60">
+            <a
+              href={datos.enlaces.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="hover:opacity-60"
+            >
               <Link2 size={18} />
             </a>
           </div>
