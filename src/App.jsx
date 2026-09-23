@@ -32,7 +32,6 @@ const datos = {
       descripcion:
         "Aplicación multiplataforma para la gestión y seguimiento de cumbres de montaña de Cataluña. Trabajo en equipo de final de curso, con el que conseguimos el reconocimiento al mejor proyecto por la excelencia demostrada durante su desarrollo.",
       tecnologias: ["Flutter", "API REST", "Node.js", "Express", "SQL"],
-      demo: "#", //Sin actualizar
       repo: "https://github.com/cims-cat/CiMS",
     },
     {
@@ -48,6 +47,20 @@ const datos = {
         "Implementación de una caché LRU desde cero, optimizada de O(n) a O(1) con una lista doblemente enlazada (escrita a mano) y un HashMap. Thread-safe mediante synchronized, con suite de tests JUnit que incluye pruebas de concurrencia. Desarrollada con TDD.",
       tecnologias: ["Java", "Maven", "JUnit"],
       repo: "https://github.com/dacaga-hub/LRU-Cache-Java",
+    },
+    {
+      titulo: "URL Shortener en Java",
+      descripcion:
+        "Acorta URLs largas a un código corto y redirige de vuelta al visitar ese código. Proyecto de aprendizaje de Spring Boot con foco en TDD y decisiones de diseño explícitas.",
+      tecnologias: ["Java","Spring Boot", "Maven", "JUnit"],
+      repo: "https://github.com/dacaga-hub/URL-Shortener",
+    },
+    {
+      titulo: "MCP Job Tracker en Python",
+      descripcion:
+        "Un pequeño servidor Model Context Protocol (MCP), junto con un agente impulsado por Claude que lo utiliza, para realizar consultas en lenguaje natural a una herramienta de seguimiento de búsqueda de empleo.",
+      tecnologias: ["Python", "MCP", "Claude API"],
+      repo: "https://github.com/dacaga-hub/mcp-job-tracker",
     },
   ],
 
