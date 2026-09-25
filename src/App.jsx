@@ -62,6 +62,13 @@ const datos = {
       tecnologias: ["Python", "MCP", "Claude API"],
       repo: "https://github.com/dacaga-hub/mcp-job-tracker",
     },
+    {
+      titulo: "iDevice Photo Rescue",
+      descripcion:
+        "Herramienta en Python para recuperar la fototeca sincronizada de un iPod Touch antiguo vía el protocolo AFC, sin software de pago ni jailbreak. Nacido de un caso real: el rescate de más de 2800 fotos que Windows no mostraba.",
+      tecnologias: ["Python", "pymobiledevice3", "AFC", "iOS"],
+      repo: "https://github.com/dacaga-hub/idevice-photo-rescue",
+    },
   ],
 
   // CERTIFICACIONES
