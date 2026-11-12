@@ -8,16 +8,18 @@ import {
   Copy,
   Check,
   FileText,
+  Briefcase,
 } from "lucide-react";
 
 //DATOS PERSONALES
 const datos = {
   nombre: "Daniel Caravaca Garcia",
-  rol: "Desarrollador de Aplicaciones Multiplataforma",
+  rol: "Consultor ERP · Desarrollador de software",
   pitch:
-    "Desarrollador junior con experiencia profesional en frontend (Vue.js, Cypress) y proyectos propios en Java/Spring Boot y Python. Busco un equipo donde seguir creciendo hacia full-stack.",
+    "Consultor ERP junior en O&S Consultores (Grupo Deister), con base de desarrollador: experiencia profesional en frontend (Vue.js, Cypress) y proyectos propios en Java/Spring Boot y Python.",
   ubicacion: "Barcelona, España",
-  disponible: true,
+  // Puesto actual: se muestra como etiqueta en la cabecera. Déjalo vacío ("") para ocultarla.
+  puestoActual: "Consultor ERP Junior en O&S Consultores",
   email: "daniel.caravacagarcia@gmail.com",
 
   enlaces: {
@@ -52,7 +54,7 @@ const datos = {
       titulo: "URL Shortener en Java",
       descripcion:
         "Acorta URLs largas a un código corto y redirige de vuelta al visitar ese código. Proyecto de aprendizaje de Spring Boot con foco en TDD y decisiones de diseño explícitas.",
-      tecnologias: ["Java","Spring Boot", "Maven", "JUnit"],
+      tecnologias: ["Java", "Spring Boot", "Maven", "JUnit"],
       repo: "https://github.com/dacaga-hub/URL-Shortener",
     },
     {
@@ -76,35 +78,35 @@ const datos = {
     {
       titulo: "Claude Code in Action",
       emisor: "Claude Academy (Anthropic)",
-      fecha: "June 2026",
+      fecha: "Junio 2026",
       tecnologias: ["Claude Code", "AI Workflows"],
       credencial: "https://academy.claude.com/verify/8e21504bb6e6f6991a10e012716cbd40",
     },
     {
       titulo: "Introduction to Agent Skills",
       emisor: "Claude Academy (Anthropic)",
-      fecha: "June 2026",
+      fecha: "Junio 2026",
       tecnologias: ["Agent Skills", "Claude Code"],
       credencial: "https://academy.claude.com/verify/dfffcd06281eb741db91da9df6eed8a0",
     },
     {
       titulo: "Introduction to Subagents",
       emisor: "Claude Academy (Anthropic)",
-      fecha: "June 2026",
+      fecha: "Junio 2026",
       tecnologias: ["Subagents", "Claude Code"],
       credencial: "https://academy.claude.com/verify/2f408bd1bb890f89a3c2dbfadbf4418f",
     },
     {
       titulo: "Introduction to Model Context Protocol",
       emisor: "Claude Academy (Anthropic)",
-      fecha: "September 2026",
+      fecha: "Septiembre 2026",
       tecnologias: ["MCP", "Python"],
       credencial: "https://academy.claude.com/verify/e6d8b06b1e82a6ad39023d332431520c",
     },
-        {
+    {
       titulo: "Model Context Protocol: Advanced topics",
       emisor: "Claude Academy (Anthropic)",
-      fecha: "September 2026",
+      fecha: "Septiembre 2026",
       tecnologias: ["MCP", "Python"],
       credencial: "https://academy.claude.com/verify/5a292b5d5da903bce114a1ab36d72810",
     },
@@ -130,7 +132,7 @@ const datos = {
   ],
 
   sobreMi:
-    "Soy desarrollador junior de aplicaciones multiplataforma. Disfruto convirtiendo diseños en interfaces que funcionan bien en cualquier dispositivo. Me formo de manera autónoma y busco un equipo donde seguir creciendo, integrando herramientas de IA para desarrollar de forma más eficiente.",
+    "Vengo del desarrollo de software y hoy trabajo como consultor ERP: entender cómo funciona cada negocio y convertirlo en soluciones que de verdad le ayuden. Antes fui fisioterapeuta durante cinco años, y de esa etapa me llevo la costumbre de escuchar antes de proponer. Me formo de manera autónoma y constante, sobre todo en IA generativa.",
 };
 
 //PALETA
@@ -311,22 +313,13 @@ export default function Portfolio() {
 
         {/* ---------- HERO ---------- */}
         <header className="mt-16 sm:mt-24">
-          {datos.disponible && (
+          {datos.puestoActual && (
             <div
               className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-6"
               style={{ backgroundColor: c.blanco, border: `1px solid ${c.borde}` }}
             >
-              <span className="relative flex h-2 w-2">
-                <span
-                  className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping"
-                  style={{ backgroundColor: c.verde }}
-                />
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ backgroundColor: c.verde }}
-                />
-              </span>
-              Disponible para trabajar
+              <Briefcase size={13} style={{ color: c.acento }} />
+              {datos.puestoActual}
             </div>
           )}
 
@@ -413,7 +406,7 @@ export default function Portfolio() {
             Contacto
           </h2>
           <p className="mt-6 text-base leading-relaxed" style={{ color: c.suave }}>
-            ¿Tienes un puesto o quieres hablar? Escríbeme.
+            ¿Quieres hablar o comentar algún proyecto? Escríbeme.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <a
